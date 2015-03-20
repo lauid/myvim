@@ -65,3 +65,14 @@ syntax on
 " 快捷键 i 开/关缩进可视化
 ":nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 "let g:Powerline_colorscheme='solarized256'
+"
+
+"DoxLic、DoxAuthor、Dox
+let g:DoxygenToolkit_authorName="LGH, lgh.eng@gmail.com"
+let s:licenseTag = "Copyright(C)\<enter>"
+let s:licenseTag = s:licenseTag . "For free\<enter>"
+let s:licenseTag = s:licenseTag . "All right reserved\<enter>"
+let g:DoxygenToolkit_licenseTag = s:licenseTag
+let g:DoxygenToolkit_briefTag_funcName="yes"
+let g:doxygen_enhanced_color=1
+
