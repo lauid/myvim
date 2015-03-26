@@ -10,7 +10,7 @@ set ignorecase
 "删除不剪切
 nmap DD "_dd
 "super tab
-let g:SuperTabRetainCompletionType="context"
+"let g:SuperTabRetainCompletionType="context"
 " 设置NerdTree
 map <F3> :NERDTreeMirror<CR>
 map <F3> :NERDTreeToggle<CR>
@@ -76,3 +76,6 @@ let g:DoxygenToolkit_licenseTag = s:licenseTag
 let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:doxygen_enhanced_color=1
 
+
+
+let g:SuperTabMappingForward = '<s-tab>'
