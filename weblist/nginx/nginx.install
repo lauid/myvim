@@ -1,0 +1,70 @@
+
+yum -y install gcc gcc-c++ automake autoconf libtool make
+
+
+cd /usr/local/src
+wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.36.tar.bz2
+tar -zxvf pcre-8.36.tar.gz
+cd pcre-8.34
+./configure
+make
+make install
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+cd /usr/local/src
+wget http://zlib.net/zlib-1.2.8.tar.gz
+tar -zxvf zlib-1.2.8.tar.gz
+cd zlib-1.2.8
+./configure
+make
+make install
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+cd /usr/local/src
+wget http://www.openssl.org/source/openssl-1.0.1c.tar.gz
+tar -zxvf openssl-1.0.1c.tar.gz
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+cd /usr/local/src
+wget http://nginx.org/download/nginx-1.4.2.tar.gz
+tar -zxvf nginx-1.4.2.tar.gz
+cd nginx-1.4.2
+
+./configure --sbin-path=/usr/local/nginx/nginx \
+--conf-path=/usr/local/nginx/nginx.conf \
+--pid-path=/usr/local/nginx/nginx.pid \
+--with-http_ssl_module \
+--with-pcre=/usr/local/src/pcre-8.34 \
+--with-zlib=/usr/local/src/zlib-1.2.8 \
+--with-openssl=/usr/local/src/openssl-1.0.1c
+
+make
+make install
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++tengine
+wget -c http://tengine.taobao.org/download/tengine-2.0.3.tar.gz #获取安装包
+ 
+tar zxvf tengine-2.0.3.tar.gz #解压缩
+ 
+cd tengine-2.0.3 #进入安装文件目录
+ 
+./configure #执行安装脚本
+ 
+make  && make install#编译安装
+ 
+mv /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.old #备份nginx配置文件
+ 
+cp -r objs/nginx /usr/local/nginx/sbin/nginx #拷贝相关文件
+
+
+[root@localhost tengine]# ./sbin/nginx -v
+./sbin/nginx: error while loading shared libraries: libpcre.so.1: cannot open shared object file: No such file or directory
+[root@localhost tengine]# whereis libpcre.so.1
+libpcre.so: /lib64/libpcre.so.0 /usr/local/lib/libpcre.so.1 /usr/local/lib/libpcre.so
+[root@localhost tengine]# ln -s /usr/local/lib/libpcre.so.1 /lib64/
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
