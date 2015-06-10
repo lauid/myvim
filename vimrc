@@ -1,4 +1,5 @@
 ""----------------------------------------------my setting
+colorscheme ron
 let g:neocomplcache_enable_at_startup = 1
 hi PreProc    ctermfg=DarkGreen
 set tabstop=4
